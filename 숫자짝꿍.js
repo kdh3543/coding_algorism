@@ -6,6 +6,7 @@ function solution(X, Y) {
     xCountArr[i] = X.split('').sort().filter(param => param === `${i}`).length
     yCountArr[i] = Y.split('').sort().filter(param => param === `${i}`).length
   }
+ 
   for (let i = 9; i >= 0; i--){
     if (xCountArr[i] === 0 || yCountArr[i] === 0) {
       continue;
