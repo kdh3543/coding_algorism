@@ -1,6 +1,4 @@
 function solution(phone_number) {
-  return phone_number.replace(phone_number.substring(0, phone_number.length - 4),'*');
+  return phone_number.split('').fill('*',0,phone_number.length-4).join('')
 }
 
-const key = '0102345'
-console.log(test)
