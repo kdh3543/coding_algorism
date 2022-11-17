@@ -9,6 +9,5 @@ process.stdin.on('data', data => {
     }
     result+='\n'
   }
-    console.log(result);
 });
 // solution(5,3)
