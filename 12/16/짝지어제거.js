@@ -10,14 +10,24 @@ function solution(s)
     return sArr.length === 0 ? 1 : 0;
 }
 
-const s = 'ccdd'
-
-const sArr = s.split('')
+const s = 'abba'
+let newStr = ''
+let sArr = s.split('')
 for (let i = 0; i < sArr.length; i++){
-  if (sArr[i] === sArr[i + 1]) {
-    sArr.splice(i, 2)
-    i = -1
+  if (i >= sArr.length) {
+    sArr = newStr.split('')
+    i = -1;
+    continue
   }
+
+  console.log(i)
+  if (sArr[i] === sArr[i + 1]) {
+    i++  
+    continue;
+  }
+  newStr += sArr[i]
+  
+  
 }
-console.log(sArr.length)
-console.log(sArr.join(''))
+console.log(newStr)
+console.log(sArr)
