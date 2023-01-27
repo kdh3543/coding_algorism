@@ -1,17 +1,32 @@
 function solution(numer1, denom1, numer2, denom2) {
-  let sum = 1
-let fakedenom1 = denom1
-let fakedenom2 = denom2
-for(let i = 2; i <= denom1; i++){
-if(fakedenom1%i===0&&fakedenom2%i===0){
-  fakedenom1 = denom1/i
-  fakedenom2= denom2/i
-  sum = sum * i
-  console.log(sum, fakedenom1, fakedenom2)
-  i = 2
-}
-}
-sum = sum * fakedenom1 * fakedenom2
+  let fDenom1 = denom1;
+  let fDenom2 = denom2;
 
-  return [sum/denom1*numer1+sum/denom2*numer2, sum]
+  let i = 2;
+  let sum = 1;
+  while (true) {
+    if (denom1 % i === 0 && denom2 % i === 0) {
+      sum = sum * i;
+      denom1 = denom1 / i;
+      denom2 = denom2 / i;
+      i = 2;
+      continue;
+    }
+    i++;
+    if (i > denom2) break;
+  }
+  let prod = sum * denom1 * denom2;
+  let head = (prod / fDenom1) * numer1 + (prod / fDenom2) * numer2;
+  let j = 2;
+  while (true) {
+    if (head % j === 0 && prod % j === 0) {
+      head = head / j;
+      prod = prod / j;
+      j = 2;
+      continue;
+    }
+    j++;
+    if (j > head && j > prod) break;
+  }
+  return [head, prod];
 }
