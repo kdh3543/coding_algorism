@@ -1,7 +1,14 @@
 function solution(babbling) {
-  var answer = 0;
+  let str = ["aya", "ye", "woo", "ma"];
+  let answer = 0;
+
+  for (let i = 0; i < babbling.length; i++) {
+    for (let j = 0; j < str.length; j++) {
+      if (babbling[i].includes(str[j])) {
+        babbling[i] = babbling[i].replace(str[j], "A");
+      }
+    }
+    if (babbling[i].split("").every((val) => val == "A")) answer++;
+  }
   return answer;
 }
-
-let str = ["aya", "ye", "woo", "ma"];
-const babbling = ["ayaye", "uuuma", "ye", "yemawoo", "ayaa"];
