@@ -23,5 +23,3 @@ function solution(str, t) {
 
   return arr;
 }
-
-testtttt;
