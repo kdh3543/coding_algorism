@@ -1,18 +1,15 @@
 function solution(operations) {
-  var answer = [];
-  return answer;
-}
+  let arr = [];
 
-let operations = ["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"];
-// [0, 0]
-
-let command = ["I", "D 1", "D -1"];
-
-let arr = [];
-
-operations.map((val) => {
-  command.map((item) => {
-    let num = val.indexOf(item);
-    console.log(num);
+  operations.map((val) => {
+    if (val.includes("I")) {
+      arr.push(parseInt(val.split("I ")[1]));
+      arr = arr.sort((a, b) => a - b);
+    } else if (val.includes("D 1")) {
+      arr.pop();
+    } else {
+      arr.shift();
+    }
   });
-});
+  return arr.length === 0 ? [0, 0] : [arr.pop(), arr.shift()];
+}
