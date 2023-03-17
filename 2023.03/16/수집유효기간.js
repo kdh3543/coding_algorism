@@ -1,38 +1,52 @@
 function solution(today, terms, privacies) {
-  var answer = [];
+  let answer = [];
+  let todayArr = today.split(".").map((val) => parseInt(val));
+  let privaciesSplit = privacies.map((val) => val.split(" "));
+
+  let termsDayArr = terms.map((val) => parseInt(val.split(" ")[1]));
+  let termsTypeArr = terms.map((val) => val.split(" ")[0]);
+
+  let dayArr = privaciesSplit.map((val) =>
+    val[0].split(".").map((item) => parseInt(item))
+  );
+  let typeArr = privaciesSplit.map((val) => val[1]);
+
+  for (let i = 0; i < dayArr.length; i++) {
+    for (let j = 0; j < termsTypeArr.length; j++) {
+      if (termsTypeArr[j] === typeArr[i]) {
+        dayArr[i][1] += termsDayArr[j];
+      }
+    }
+  }
+  for (let i = 0; i < dayArr.length; i++) {
+    if (dayArr[i][1] > 12) {
+      if (dayArr[i][1] % 12 === 0) {
+        dayArr[i][0] += Math.floor(dayArr[i][1] / 12) - 1;
+        dayArr[i][1] = 12;
+        continue;
+      }
+      dayArr[i][0] += Math.floor(dayArr[i][1] / 12);
+      dayArr[i][1] %= 12;
+    }
+  }
+  for (let i = 0; i < dayArr.length; i++) {
+    if (dayArr[i][0] > todayArr[0]) {
+      continue;
+    } else if (dayArr[i][0] === todayArr[0]) {
+      if (dayArr[i][1] > todayArr[1]) {
+        continue;
+      } else if (dayArr[i][1] === todayArr[1]) {
+        if (dayArr[i][2] > todayArr[2]) {
+          continue;
+        } else {
+          answer.push(i + 1);
+        }
+      } else {
+        answer.push(i + 1);
+      }
+    } else {
+      answer.push(i + 1);
+    }
+  }
   return answer;
 }
-
-let today = "2022.05.19";
-
-let terms = ["A 6", "B 12", "C 3"];
-let privacies = [
-  "2021.05.02 A",
-  "2021.07.01 B",
-  "2022.02.19 C",
-  "2022.02.20 C",
-];
-
-let termsArr = [];
-
-let dayArr = privacies.map((val) => val.split("."));
-// let dayArr = [];
-console.log(dayArr);
-
-// let prArr = privacies.map((val) => val.split(".", " "));
-// console.log(prArr);
-// for (let i = 0; i < privacies.length; i++) {
-//   for (let j = 0; j < termsArr.length; j++) {
-//     let timeSplit = privacies[i].split(".");
-//     if (termsArr[j][0] === privacies[i].split(" ")[1]) {
-//       if (termsArr[j][1] > 12) {
-//         timeSplit[0] += Math.ceil(termsArr[j][1] / 12);
-//       } else {
-//         timeSplit[1] += termsArr[j][1];
-//       }
-//       console.log;
-//       privacies[i] = timeSplit.join(".");
-//     }
-//   }
-// }
-// console.log(privacies);
