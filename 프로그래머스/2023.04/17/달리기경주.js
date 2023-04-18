@@ -9,7 +9,10 @@ let callings = ['kai', 'kai', 'mine', 'mine']
 
 let answer = []
 
+let map = new Map()
+
 for (let i = 0; i < callings.length; i++) {
+  // map.set(callings[i], map.has(callings[i]) ? map.get(callings[i]) + 1 : 1)
   // let num = players.findIndex((val) => val === callings[i])
   let num = 0
   for (let j = 0; j < players.length; j++) {
@@ -21,6 +24,7 @@ for (let i = 0; i < callings.length; i++) {
   players[num] = players[num - 1]
   players[num - 1] = tmp
 }
+console.log(map)
 console.log(players)
 // let t = [1, 2, 3]
 
