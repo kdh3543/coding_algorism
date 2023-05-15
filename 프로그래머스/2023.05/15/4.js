@@ -6,5 +6,5 @@ function solution(my_string, letter) {
 //정규 표현식
 let my_string = 'abcdef'
 let letter = 'f'
-let reg = new RegExp(letter, 'g')
+let reg = new RegExp(letter, 'g') // flag를 두번째 매개변수로 입력
 my_string.replace(reg, '')
