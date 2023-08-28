@@ -6,6 +6,7 @@ function solution(n, t, m, p) {
   }
 
   let arr = str.split("");
+
   let answer = "";
   for (let i = 0; i < t; i++) {
     if (answer.length <= t) answer += arr[m * i + p - 1];
