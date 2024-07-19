@@ -15,8 +15,6 @@ const procession = input
 const A = input.splice(0, procession[1]);
 const B = input;
 
-console.log(A, B);
-
 for (let i = 0; i < A.length; i++) {
   const arrA = A[i].split(" ");
   const arrB = B[i].split(" ");
