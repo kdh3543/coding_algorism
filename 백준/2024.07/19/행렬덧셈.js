@@ -12,14 +12,14 @@ const procession = input
   .split(" ")
   .map((v) => parseInt(v));
 
-const A = input.splice(0, procession[1]);
+const A = input.splice(0, procession[0]);
 const B = input;
 
 for (let i = 0; i < A.length; i++) {
   const arrA = A[i].split(" ");
   const arrB = B[i].split(" ");
   let sumStr = "";
-  for (let j = 0; j < B.length; j++) {
+  for (let j = 0; j < arrA.length; j++) {
     sumStr += parseInt(arrA[j]) + parseInt(arrB[j]) + " ";
   }
   console.log(sumStr);
