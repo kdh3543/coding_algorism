@@ -5,19 +5,21 @@ let input = fs
   .toString()
   .trim()
   .split("\n")
-  .map((v) => v.trim());
+  .map((v) => +v.trim());
 
-input.pop();
-
-input.map((v) => {
-  const arr = v.split(" ");
-  const num1 = parseInt(arr[0]);
-  const num2 = parseInt(arr[1]);
-  if (num1 % num2 === 0) {
-    console.log("multiple");
-  } else if (num2 % num1 === 0) {
-    console.log("factor");
-  } else {
-    console.log("neither");
+for (let i = 0; i < input.length; i++) {
+  const num = input[i];
+  let arr = [];
+  for (let j = 0; j < Math.sqrt(num); j++) {
+    if (num % j === 0) {
+      arr.push(num / j, j);
+    }
   }
-});
+  arr = arr.sort((a, b) => a - b).filter((v) => v !== num);
+  const sum = arr.reduce((a, b) => a + b, 0);
+  if (sum === num) {
+    console.log(`${num} = ${arr.join(" + ")}`);
+  } else {
+    console.log(`${num} is NOT perfect.`);
+  }
+}
