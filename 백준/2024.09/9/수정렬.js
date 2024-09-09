@@ -6,6 +6,6 @@ let input = fs
   .split("\n")
   .map((v) => +v.trim());
 
-const arr = input.splice(0, 5);
-console.log(arr.reduce((a, b) => a + b, 0) / 5);
-console.log(arr.sort((a, b) => a - b)[2]);
+const num = input.shift();
+const arr = [...new Set(input.slice(0, +num).sort((a, b) => a - b))];
+arr.forEach((v) => console.log(v));
