@@ -16,3 +16,5 @@ for (let i = 0; i < input.length; i++) {
   result += input[i] + "\n";
 }
 console.log(result);
+
+test;
