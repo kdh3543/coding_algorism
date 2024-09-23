@@ -4,17 +4,17 @@ let input = fs
   .readFileSync(file)
   .toString()
   .split("\n")
-  .map((v) => +v.trim());
+  .map((v) => v.trim());
 
-const num = input.shift();
-const arr = Array.from({ length: 999999 }, (_, i) => i);
-for (const i of arr) input.push(i);
-input = input.slice(0, num).sort((a, b) => a - b);
+const num = +input.shift();
 
-let result = "";
-for (let i = 0; i < input.length; i++) {
-  result += input[i] + "\n";
-}
-console.log(result);
-
-test;
+input = input
+  .map((v) => v.split(" ").map((t) => +t))
+  .slice(0, num)
+  .sort((a, b) => a[0] - b[0])
+  .sort((a, b) => {
+    if (a[0] === b[0] && a[1] < b[1]) return a[1] - b[1];
+  });
+input.forEach((v) => {
+  console.log(v.join(" "));
+});
